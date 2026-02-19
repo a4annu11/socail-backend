@@ -60,9 +60,6 @@ export const protect = async (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     console.log("Decoded ID:", decoded.id);
 
-    console.log("Mongo Host:", mongoose.connection.host);
-    console.log("Mongo DB:", mongoose.connection.name);
-
     const user = await User.findById(decoded.id);
     console.log("User Found:", user);
 
