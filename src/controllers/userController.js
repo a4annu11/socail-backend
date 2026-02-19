@@ -8,12 +8,8 @@ export const getMyProfile = async (req, res) => {
   try {
     const userId = req.user.id;
 
-    console.log("GOTTTT userID", userId);
-
     const user = await User.findById(userId).select("-password");
     // .populate("followers following", "username name profilePicture");
-
-    console.log("GOTTTT user", user);
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });

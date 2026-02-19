@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import { connectDB } from "./src/db/connectDB.js";
 import authRoute from "./src/routes/authRoute.js";
 import userRoute from "./src/routes/userRoute.js";
+import postRoute from "./src/routes/postRoute.js";
 
 dotenv.config();
 
@@ -14,7 +15,8 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/auth", authRoute);
-app.use("/user", userRoute);
+app.use("/user/profile", userRoute);
+app.use("/content", postRoute);
 
 app.listen(PORT, "0.0.0.0", () => {
   connectDB();
